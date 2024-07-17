@@ -1,0 +1,7 @@
+#!/bin/bash
+
+export INIT="fs"
+export ENABLE_ARG="on"
+export DISABLE_ARG="off"
+export STATUS_ARG="stt"
+
