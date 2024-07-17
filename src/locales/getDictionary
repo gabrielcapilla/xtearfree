@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# shellcheck disable=SC1091
+source "$(dirname "${BASH_SOURCE[0]}")/getSystemLang"
+
+declare -A dictionary=(
+    [es_help]="Uso:\n fs <operación>\n\nOperaciones de fs:\n fs on\n fs off\n fs stt\n\nExplicación:\n on\tActiva TearFree\n off\tDesactiva TearFree\n stt\tMuestra el estado de TearFree"
+    [en_help]="Usage:\n fs <operation>\n\nfs Operations:\n fs on\n fs off\n fs stt\n\nExplanation:\n on\tActivates TearFree\n off\tDeactivates TearFree\n stt\tDisplays TearFree status"
+)
+
+function print() {
+    local action=$1
+    local lang
+    lang=$(lang)
+    local code="${lang}_${action}"
+
+    printf "%s" "${dictionary[$code]}"
+}

@@ -1,0 +1,32 @@
+#!/bin/bash
+
+readonly OPT_DIR="/opt"
+readonly SCRIPT_DIR="$OPT_DIR/xtearfree"
+
+function make_folder() {
+  if [ ! -d "$SCRIPT_DIR" ]; then
+    sudo mkdir -p "$SCRIPT_DIR"
+  fi
+}
+
+function install_bin() {
+  local binFile="../bin/fs"
+  local USR_LOCAL_BIN_DIR="/usr/local/bin"
+  sudo cp "$binFile" "$USR_LOCAL_BIN_DIR"
+}
+
+function install_script() {
+  local SRC_DIR="../src"
+  local INIT_FILE="../init"
+  sudo cp -r "$SRC_DIR" "$SCRIPT_DIR"
+  sudo cp -r "$INIT_FILE" "$SCRIPT_DIR"
+}
+
+function main() {
+  make_folder
+  install_bin
+  install_script
+  echo "Script installed"
+}
+
+main

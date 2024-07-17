@@ -1,0 +1,9 @@
+#!/bin/bash
+
+function switch() {
+    local device="$1"
+    local status="$2"
+
+    xrandr --output "$device" --set "TearFree" "$status"
+    kdialog --passivepopup "$device" --title "Tearfree $status" --icon "monitor" 2
+}
