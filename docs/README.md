@@ -2,7 +2,7 @@
 
 xTearFree allows you to enable or disable the _TearFree_ option in X11, improving the viewing experience by eliminating tearing in some graphical environments.
 
-<div align="center"> <img src="kdialog-on.png" width="33%" height="33%"> </div>
+<!-- <div align="center"> <img src="kdialog-on.png" width="33%" height="33%"> </div> -->
 
 ---
 
