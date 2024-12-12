@@ -3,7 +3,12 @@
 function switch() {
     local device="$1"
     local status="$2"
+    local SILENT="$3"
 
     xrandr --output "$device" --set "TearFree" "$status"
-    kdialog --passivepopup "$device" --title "Tearfree $status" --icon "monitor" 2
+
+    if [ "$SILENT" = false ]; then
+        kdialog --passivepopup "$device" --title "Tearfree $status" --icon "monitor" 2
+        echo "Tearfree $status | $device"
+    fi
 }

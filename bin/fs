@@ -1,4 +1,4 @@
 #!/bin/bash
 
-readonly SCRIPT_DIR="/opt/xtearfree"
+readonly SCRIPT_DIR="$HOME/.local/share/xtearfree"
 bash "$SCRIPT_DIR/init" "$@"

@@ -5,33 +5,30 @@ source "$(dirname "$0")/src/functions/help"
 source "$(dirname "$0")/src/functions/device"
 source "$(dirname "$0")/src/functions/status"
 source "$(dirname "$0")/src/functions/switch"
+source "$(dirname "$0")/src/functions/silence"
 source "$(dirname "$0")/src/routes/routesArg"
 source "$(dirname "$0")/src/locales/getDictionary"
-source "$(dirname "$0")/src/locales/getSystemLang"
 
 function main() {
-    declare -r setup=$(xrandr --prop | devices)
+    setup=$(xrandr --prop | devices)
 
-    if [ $# -eq 1 ]; then
-        local argument="$1"
+    local opt="$1"
+    silence "$@"
 
-        case "$argument" in
-        "$ENABLE_ARG")
-            switch "$setup" "on"
-            ;;
-        "$DISABLE_ARG")
-            switch "$setup" "off"
-            ;;
-        "$STATUS_ARG")
-            status "$setup"
-            ;;
-        *)
-            help
-            ;;
-        esac
-    else
+    case "$opt" in
+    "$ENABLE_ARG")
+        switch "$setup" "on" "$SILENT"
+        ;;
+    "$DISABLE_ARG")
+        switch "$setup" "off" "$SILENT"
+        ;;
+    "$STATUS_ARG")
+        status "$setup"
+        ;;
+    *)
         help
-    fi
+        ;;
+    esac
 }
 
 main "$@"

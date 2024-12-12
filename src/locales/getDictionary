@@ -4,8 +4,8 @@
 source "$(dirname "${BASH_SOURCE[0]}")/getSystemLang"
 
 declare -A dictionary=(
-    [es_help]="Uso: $INIT [$ENABLE_ARG] [$DISABLE_ARG] [$STATUS_ARG]\nOpciones:\n  $ENABLE_ARG\tActiva TearFree\n  $DISABLE_ARG\tDesactiva TearFree\n  $STATUS_ARG\tMuestra el estado de TearFree"
-    [en_help]="Usage: $INIT [$ENABLE_ARG] [$DISABLE_ARG] [$STATUS_ARG]\Options:\n  $ENABLE_ARG\tEnable TearFree\n  $DISABLE_ARG\tDisable TearFree\n  $STATUS_ARG\tShows TearFree status"
+    [es_help]="Uso: $INIT [$ENABLE_ARG] [$DISABLE_ARG] [$STATUS_ARG] [$SILENT_ARG]"
+    [en_help]="Usage: $INIT [$ENABLE_ARG] [$DISABLE_ARG] [$STATUS_ARG] [$SILENT_ARG]"
 )
 
 function print() {
@@ -13,5 +13,5 @@ function print() {
     lang=$(lang)
     local code="${lang}_${action}"
 
-    printf "%s" "${dictionary[$code]}"
+    echo "${dictionary[$code]}"
 }

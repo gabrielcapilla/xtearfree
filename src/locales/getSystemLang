@@ -5,8 +5,8 @@ function lang() {
     local available=("es" "en")
 
     if [[ " ${available[*]} " == *"$lang"* ]]; then
-        printf "%s" "$lang"
+        echo "$lang"
     else
-        printf "%s" "en"
+        echo "en"
     fi
 }
