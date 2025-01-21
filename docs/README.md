@@ -25,7 +25,7 @@ cd ~/xtearfree/tools && bash install
 - Run the script with `--uninstall` flag
 
 ```sh
-cd ~/xtearfree/tools && bash setup --uninstall
+cd ~/xtearfree/tools && bash install --uninstall
 ```
 
 ---
