@@ -17,7 +17,7 @@ git clone https://github.com/gabrielcapilla/xtearfree.git
 - Run the installation script
 
 ```sh
-cd ~/xtearfree/tools && bash setup
+cd ~/xtearfree/tools && bash install
 ```
 
 ### Uninstall
