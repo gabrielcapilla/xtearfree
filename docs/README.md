@@ -1,31 +1,43 @@
-# TearFree Toggle Script for X11
+# TearFree Toggle for X11
 
 xTearFree allows you to enable or disable the _TearFree_ option in X11, improving the viewing experience by eliminating tearing in some graphical environments.
 
-<!-- <div align="center"> <img src="kdialog-on.png" width="33%" height="33%"> </div> -->
+**xTearFree has been completely rewritten in Nim.**
 
 ---
 
-## Install
+## Build and install with Nim
 
-- Download the repository
+- Install Nim
+
+```sh
+curl https://nim-lang.org/choosenim/init.sh -sSf | sh
+```
+
+- Download the repository.
 
 ```sh
 git clone https://github.com/gabrielcapilla/xtearfree.git
 ```
 
-- Run the installation script
+- Change directory
 
 ```sh
-cd ~/xtearfree/tools && bash install
+cd $HOME/xtearfree
 ```
 
-### Uninstall
-
-- Run the script with `--uninstall` flag
+- Build and install the program with `Nimble`
 
 ```sh
-cd ~/xtearfree/tools && bash install --uninstall
+nimble install
+```
+
+After that, you will get a ready-to-use xTearFree.
+
+### Uninstall using `Nimble`
+
+```sh
+cd $HOME/xtearfree && nimble uninstall fs
 ```
 
 ---
@@ -44,12 +56,11 @@ fs on
 fs off
 ```
 
-- Display the current status of TearFree using _KDE kdialog popup_.
+- Display the current status of TearFree using _notify-send popup_.
 
 ```sh
 fs status
 ```
-
 
 - The script is executed silently.
 
@@ -98,4 +109,5 @@ xrandr --output DisplayPort-2 --set TearFree on
 
 Where output should look like DisplayPort-0 or HDMI-A-0 and can be acquired by running xrandr -q.
 
-[Source: wiki.archlinux.org](https://wiki.archlinux.org/title/AMDGPU)
+- Source: [wiki.archlinux.org](https://wiki.archlinux.org/title/AMDGPU)
+- Source repository: https://github.com/gabrielcapilla/xtearfree
