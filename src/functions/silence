@@ -1,8 +1,0 @@
-#!/bin/bash
-
-function silence() {
-    if [ $# -eq 2 ] && [ "$2" == "$SILENT_ARG" ]; then
-        export SILENT
-        SILENT=true
-    fi
-}
