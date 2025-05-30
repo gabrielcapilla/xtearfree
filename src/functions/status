@@ -2,8 +2,8 @@
 
 function status() {
     local device="$1"
-    declare -r currentStatus=$(xrandr --prop | sed -n "/$device/,/^$/ p" | grep "TearFree" | head -n 1)
-    declare -r tearFreeStatus=$(echo "$currentStatus" | awk -F": " '{print $2}')
+    declare -rx currentStatus=$(xrandr --prop | sed -n "/$device/,/^$/ p" | grep "TearFree" | head -n 1)
+    declare -rx tearFreeStatus=$(echo "$currentStatus" | awk -F": " '{print $2}')
 
     kdialog --passivepopup "$device" --title "Tearfree $tearFreeStatus" --icon "monitor" 5
     echo "Tearfree $tearFreeStatus| $device"
