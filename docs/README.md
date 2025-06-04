@@ -1,8 +1,8 @@
 # TearFree Toggle for X11
 
-xTearFree allows you to enable or disable the _TearFree_ option in X11, improving the viewing experience by eliminating tearing in some graphical environments.
+*xTearFree has been completely rewritten in Nim.*****
 
-**xTearFree has been completely rewritten in Nim.**
+xTearFree allows you to enable or disable the _TearFree_ option in X11, improving the viewing experience by eliminating tearing in some graphical environments.
 
 ---
 
@@ -37,7 +37,7 @@ After that, you will get a ready-to-use xTearFree.
 ### Uninstall using `Nimble`
 
 ```sh
-cd $HOME/xtearfree && nimble uninstall fs
+nimble uninstall fs
 ```
 
 ---
