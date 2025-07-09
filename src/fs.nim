@@ -20,15 +20,15 @@ type
     configuration: ApplicationConfiguration
 
 const
-  NotificationIcon = "monitor"
-  NotificationDuration = 2
+  NotificationIcon: string = "monitor"
+  NotificationDuration: int = 2
 
 proc getUsageInformation(): string =
   ## Returns a string with the usage information of the application.
   ## Includes a description of commands, options, and usage examples.
   ## The application name is extracted from the executable file.
 
-  let applicationName = getAppFilename().lastPathPart
+  let applicationName: string = getAppFilename().lastPathPart
   result = """
 TearFree Configuration Manager for X11
 
@@ -69,8 +69,8 @@ func parseCommandLineArguments(arguments: seq[string]): ApplicationConfiguration
   ## Exceptions:
   ## - `ValueError`: If no command is specified or if the command is invalid.
 
-  var silentModeEnabled = false
-  var commandArgument = ""
+  var silentModeEnabled: bool = false
+  var commandArgument: string = ""
 
   for argument in arguments:
     if argument == "--silent":
@@ -126,7 +126,7 @@ proc queryDisplayTearFreeState(displayIdentifier: string): string =
   if exitStatus != 0:
     raise newException(OSError, "Failed to query display status")
 
-  var processingDisplay = false
+  var processingDisplay: bool = false
   for line in commandOutput.splitLines():
     if line.startsWith(displayIdentifier):
       processingDisplay = true
@@ -147,7 +147,7 @@ func applyTearFreeSetting(displayIdentifier, settingState: string) =
   ## Exceptions:
   ## - `OSError`: If applying the setting fails.
 
-  let command =
+  let command: string =
     "xrandr --output " & displayIdentifier & " --set TearFree " & settingState
   if execCmd(command) != 0:
     raise
@@ -163,8 +163,8 @@ proc initializeApplicationState(arguments: seq[string]): ApplicationState =
   ## - An instance of `ApplicationState` with configuration and detected devices, or an error message if initialization fails.
 
   try:
-    let configuration = parseCommandLineArguments(arguments)
-    let displayIdentifiers = detectConnectedDisplays()
+    let configuration: ApplicationConfiguration = parseCommandLineArguments(arguments)
+    let displayIdentifiers: seq[string] = detectConnectedDisplays()
 
     var displayDevices: seq[DisplayDevice]
     for identifier in displayIdentifiers:
@@ -278,8 +278,9 @@ proc main() =
   ## Retrieves command-line arguments, initializes and updates the state,
   ## and renders the results. Exits with code 1 if there are errors or no displays are detected.
 
-  let commandLineArguments = commandLineParams()
-  var applicationState = initializeApplicationState(commandLineArguments)
+  let commandLineArguments: seq[string] = commandLineParams()
+  var applicationState: ApplicationState =
+    initializeApplicationState(commandLineArguments)
   updateApplicationState(applicationState)
   renderApplicationState(applicationState)
 
